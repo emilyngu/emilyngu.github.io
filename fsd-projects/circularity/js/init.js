@@ -30,9 +30,17 @@ var init = function (window) {
             physikz.addRandomVelocity(circle, canvas, 5, 5);
             view.addChild(circle);
             circles.push(circle);
+            // Initialize gamification features (unlocked after completing educational TODOs)
+        Gamification.init({
+            canvas: canvas,
+            view: view,
+            draw: draw,
+            physikz: physikz,
+            circles: circles,
+             game: game
+        });
         }
-
-
+        
         // TODO 3 : Call the drawCircle() function
             //drawCircle();
            // drawCircle();
@@ -76,7 +84,8 @@ var init = function (window) {
             physikz.updatePosition(circles[i]);
             game.checkCirclePosition(circles[i])
              }
-            
+            // Update gamification features each frame
+            Gamification.update();
         }
     
         /* 
